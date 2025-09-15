@@ -9,6 +9,40 @@ class QuizController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+ public function play(Request $request)
+    {
+        $difficulty = $request->query('difficulty');
+        $topic = $request->query('topic');
+        $questions = [
+            [
+                'question' => 'What is 2 + 2?',
+                'options'  => ['3', '4', '5', '6'],
+                'answer'   => '4',
+            ],
+            [
+                'question' => 'Which planet is known as the Red Planet?',
+                'options'  => ['Earth', 'Venus', 'Mars', 'Jupiter'],
+                'answer'   => 'Mars',
+            ],
+            [
+                'question' => 'Who was the first President of the USA?',
+                'options'  => ['Abraham Lincoln', 'George Washington', 'John Adams', 'Thomas Jefferson'],
+                'answer'   => 'George Washington',
+            ],
+        ];
+
+        return view('quizzes.play', compact('questions'));
+    }
+    public function start(Request $request)
+    {
+        $difficulty = $request->input('difficulty');
+        $topic = $request->input('topic');
+
+        return view('quizzes.play', compact('difficulty', 'topic'));
+    }
+
+
     public function index()
     {
         //

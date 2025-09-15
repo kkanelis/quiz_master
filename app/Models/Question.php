@@ -6,8 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-   public function options()
-{
-    return $this->hasMany(Option::class);
-}
+    protected $fillable = [
+        'question',
+        'options',
+        'answer',
+        'difficulty',
+        'topic',
+    ];
+
+    protected $casts = [
+        'options' => 'array', // lai JSON options pārvēršas masīvā
+    ];
 }
