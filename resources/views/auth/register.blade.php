@@ -12,8 +12,8 @@
       <form method="POST" action="/register">
           @csrf
           <div class="form-group">
-              <label class="form-label">Email</label>
-              <input type="email" class="form-input" name="email" required>
+              <label class="form-label">Username</label>
+              <input type="text" class="form-input" name="username" required>
           </div>
 
           <div class="form-group">
