@@ -27,6 +27,7 @@ Route::get('/quizzes/play', [QuizController::class, 'play'])->middleware('auth')
 Route::get('/quizzes/play', [QuizController::class, 'play'])->name('quizzes.play');
 
 
+
 Route::resource('questions', QuestionController::class);
 Route::resource('results', ResultController::class);
 Route::middleware(['auth'])->group(function () {

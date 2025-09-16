@@ -1,13 +1,14 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Quiz;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard.index');
+        $quizzes = Quiz::all();
+        return view('dashboard.index', compact('quizzes'));
     }
 }

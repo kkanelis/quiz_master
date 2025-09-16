@@ -5,7 +5,8 @@ namespace Database\Seeders;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Database\Seeders\QuestionSeeder; 
+use Database\Seeders\QuestionSeeder;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -17,10 +18,8 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create([
             'username' => 'Test User',
-            'email' => 'test@example.com',
+            'password' => bcrypt('test@example.com'),
         ]);
-         $this->call(QuestionSeeder::class);
+        $this->call(QuestionSeeder::class);
     }
-   
-
 }

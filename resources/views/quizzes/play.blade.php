@@ -1,46 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Play Quiz</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="container py-5">
+<x-layout>
+    @section('content')
+    <div class="container mx-auto p-6">
+        <h1 class="text-2xl font-bold mb-4">
+            Quiz
+            @if($topic) (Temats: {{ ucfirst($topic) }}) @endif
+            @if($difficulty) - Grūtība: {{ ucfirst($difficulty) }} @endif
+        </h1>
 
-    <h1 class="mb-4">Quiz Time!</h1>
-    <p><strong>Difficulty:</strong> {{ $difficulty }}</p>
-    <p><strong>Topic:</strong> {{ $topic }}</p>
-
-    @if($questions->isEmpty())
-        <div class="alert alert-warning">Nav atrasti jautājumi šai tēmai/grūtības pakāpei.</div>
-    @else
-        <form method="POST" action="#">
-            @csrf
-            @foreach($questions as $index => $q)
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5>{{ $index+1 }}. {{ $q->question }}</h5>
-
-                        @foreach($q->options as $option)
-                            <div class="form-check">
-                                <input class="form-check-input"
-                                       type="radio"
-                                       name="answers[{{ $q->id }}]"
-                                       id="q{{ $q->id }}_{{ $loop->index }}"
-                                       value="{{ $option }}">
-                                <label class="form-check-label" for="q{{ $q->id }}_{{ $loop->index }}">
-                                    {{ $option }}
-                                </label>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            @endforeach
-
-            <button type="submit" class="btn btn-success">Submit Answers</button>
-        </form>
-    @endif
-
-    <a href="{{ route('dashboard') }}" class="btn btn-secondary mt-3">Back to Dashboard</a>
-
-</body>
-</html>
+        @forelse($questions as $question)
+            <div class="mb-6 border p-4 rounded shadow">
+                <p class="font-semibold">{{ $question->question }}</p>
+                <ul class="mt-2 space-y-2">
+                    @foreach(json_decode($question->options) as $option)
+                        <li>
+                            <label class="flex items-center">
+                                <input type="radio" 
+                                       name="question_{{ $question->id }}" 
+                                       value="{{ $option }}" 
+                                       class="mr-2">
+                                {{ $option }}
+                            </label>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @empty
+            <p class="text-gray-500">Nav atrasts neviens jautājums ar šiem filtriem.</p>
+        @endforelse
+    </div>
+    @endsection
+</x-layout>
