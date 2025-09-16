@@ -1,53 +1,52 @@
 <x-layout>
 
-@section('content')
-<div class="container mx-auto p-6">
+<div class="dashboard-container">
+    <h1 class="dashboard-title">Izvelne</h1>
 
-    <h1 class="text-2xl font-bold mb-4">Dashboard</h1>
-
-    <div class="mb-6">
-        <h2 class="text-xl font-semibold">Izvēlies quiz tematu un grūtību</h2>
-        <form action="{{ route('quizzes.play') }}" method="GET" class="mt-2">
-            <div class="flex gap-4 items-center">
-                <div>
-                    <label for="topic" class="block font-medium">Temats:</label>
-                    <select name="topic" id="topic" class="border rounded p-1">
-                        <option value="">Visi</option>
+    <div class="quiz-selector">
+        <h2 class="section-title">Izvēlies tēmu un grūtības pakāpi</h2>
+        <form action="/quizzes/play" method="GET" class="quiz-form">
+            <div class="form-controls">
+                <div class="form-group">
+                    <label for="topic" class="form-label">Tēmas:</label>
+                    <select name="topic" id="topic" class="form-select">
+                        <option value="">Izvēlies tēmu</option>
                         <option value="math">Matemātika</option>
                         <option value="geography">Ģeogrāfija</option>
-                        
+                        <option value="sport">Sports</option>
                     </select>
                 </div>
 
-                <div>
-                    <label for="difficulty" class="block font-medium">Grūtība:</label>
-                    <select name="difficulty" id="difficulty" class="border rounded p-1">
-                        <option value="">Visas</option>
+                <div class="form-group">
+                    <label for="difficulty" class="form-label">Grūtība:</label>
+                    <select name="difficulty" id="difficulty" class="form-select">
+                        <option value="">Izvēlies grūtības pakāpi</option>
                         <option value="easy">Viegls</option>
                         <option value="medium">Vidējs</option>
                         <option value="hard">Grūts</option>
                     </select>
                 </div>
 
-                <button type="submit" class="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600">
-                    Play
+                <button type="submit" class="btn btn-primary">
+                    Sākt viktorīnu
                 </button>
             </div>
         </form>
     </div>
 
-    <div>
-        <h2 class="text-xl font-semibold mb-2">Visi Quiz</h2>
-        <ul class="space-y-2">
+    <div class="quiz-list">
+        <h2 class="section-title">Pieejamās viktorīnas</h2>
+        <div class="quiz-grid">
             @foreach($quizzes as $quiz)
-                <li class="border p-2 rounded shadow hover:bg-gray-100">
-                    <a href="{{ route('quizzes.play') }}?quiz_id={{ $quiz->id }}" class="font-medium text-blue-600">
-                        {{ $quiz->title }}
+                <div class="quiz-card">
+                    <h3 class="quiz-card-title">{{ $quiz->title }}</h3>
+                    <a href="{{ route('quizzes.play', ['topic' => $topic, 'difficulty' => $difficulty]) }}" class="btn btn-secondary">
+                        Spēlēt tagad
                     </a>
-                </li>
+                </div>
             @endforeach
-        </ul>
+        </div>
     </div>
-
 </div>
+
 </x-layout>

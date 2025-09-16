@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Question;
+use App\Models\Result;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
@@ -60,5 +63,44 @@ class QuestionController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function submitQuiz(Request $request)
+    {
+        $startTime = session('quiz_start_time');
+        $endTime = now();
+        $timeSpent = $endTime->diffInSeconds($startTime);
+        
+        $score = 0;
+        $totalQuestions = count($request->answers);
+        
+        foreach ($request->answers as $questionId => $answer) {
+            $question = Question::find($questionId);
+            if ($question && $question->answer === $answer) {
+                $score++;
+            }
+        }
+
+        // Calculate percentage
+        $percentage = ($score / $totalQuestions) * 100;
+
+        // Save result
+        Result::create([
+            'user_id' => Auth::id(),
+            'quiz_id' => $request->quiz_id,
+            'score' => $score,
+            'total_questions' => $totalQuestions,
+            'percentage' => $percentage,
+            'time_spent' => $timeSpent,
+            'topic' => $request->topic,
+            'difficulty' => $request->difficulty
+        ]);
+
+        return redirect()->route('quiz.result')->with([
+            'score' => $score,
+            'total' => $totalQuestions,
+            'time' => $timeSpent,
+            'percentage' => $percentage
+        ]);
     }
 }

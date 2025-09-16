@@ -1,32 +1,36 @@
 <x-layout>
     @section('content')
-    <div class="container mx-auto p-6">
-        <h1 class="text-2xl font-bold mb-4">
+    <div class="quiz-container">
+        <h1 class="quiz-title">
             Quiz
-            @if($topic) (Temats: {{ ucfirst($topic) }}) @endif
-            @if($difficulty) - Grūtība: {{ ucfirst($difficulty) }} @endif
+            @if($topic) (Topic: {{ ucfirst($topic) }}) @endif
+            @if($difficulty) - Difficulty: {{ ucfirst($difficulty) }} @endif
         </h1>
 
-        @forelse($questions as $question)
-            <div class="mb-6 border p-4 rounded shadow">
-                <p class="font-semibold">{{ $question->question }}</p>
-                <ul class="mt-2 space-y-2">
-                    @foreach(json_decode($question->options) as $option)
-                        <li>
-                            <label class="flex items-center">
+        <form method="POST" action="{{ route('quiz.submit') }}" id="quizForm">
+            @csrf
+            <input type="hidden" name="topic" value="{{ $topic }}">
+            <input type="hidden" name="difficulty" value="{{ $difficulty }}">
+
+            @foreach($questions as $index => $question)
+                <div class="question-card">
+                    <h3 class="question-text">{{ $index + 1 }}. {{ $question->question }}</h3>
+                    <div class="options-list">
+                        @foreach(json_decode($question->options) as $option)
+                            <label class="option-label">
                                 <input type="radio" 
-                                       name="question_{{ $question->id }}" 
+                                       name="answers[{{ $question->id }}]" 
                                        value="{{ $option }}" 
-                                       class="mr-2">
-                                {{ $option }}
+                                       required>
+                                <span>{{ $option }}</span>
                             </label>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-        @empty
-            <p class="text-gray-500">Nav atrasts neviens jautājums ar šiem filtriem.</p>
-        @endforelse
+                        @endforeach
+                    </div>
+                </div>
+            @endforeach
+
+            <button type="submit" class="btn btn-primary">Submit Quiz</button>
+        </form>
     </div>
     @endsection
 </x-layout>
