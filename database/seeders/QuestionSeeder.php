@@ -3,24 +3,19 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Question;
-use App\Models\Quiz;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class QuestionSeeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     */
     public function run(): void
     {
-        $mathquiz1 = Quiz::create(['title' => 'Matemātikas tests (Viegls)']);
-        $mathquiz2 = Quiz::create(['title' => 'Matemātikas tests (Vidējs)']);
-        $mathquiz3 = Quiz::create(['title' => 'Matemātikas tests (Grūts)']);
-
-        $sportquiz1 = Quiz::create(['title' => 'Sporta tests (Viegls)']);
-        $sportquiz2 = Quiz::create(['title' => 'Sporta tests (Vidējs)']);
-        $sportquiz3 = Quiz::create(['title' => 'Sporta tests (Grūts)']);
-
-        $geoquiz1 = Quiz::create(['title' => 'Ģeogrāfijas tests (Viegls)']);
-        $geoquiz2 = Quiz::create(['title' => 'Ģeogrāfijas tests (Vidējs)']);
-        $geoquiz3 = Quiz::create(['title' => 'Ģeogrāfijas tests (Grūts)']);
+        $quiz = Quiz::create([
+            'title' => 'Matemātikas tests',
+        ]);
 
         // Easy
         Question::create([
@@ -130,6 +125,7 @@ class QuestionSeeder extends Seeder
             'answer' => '12',
             'difficulty' => 'hard',
             'topic' => 'math',
+>>>>>>> 13257079115520e3a6f0b25a1188ee6c0c831a15
         ]);
         Question::create([
             'quiz_id' => $mathquiz3->id,

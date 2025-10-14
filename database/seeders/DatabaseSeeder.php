@@ -20,6 +20,9 @@ class DatabaseSeeder extends Seeder
             'username' => 'Test User',
             'password' => bcrypt('test@example.com'),
         ]);
-        $this->call(QuestionSeeder::class);
+        $this->call([
+
+        QuestionSeeder::class,
+    ]);
     }
 }
