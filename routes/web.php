@@ -23,8 +23,9 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware('auth');
 
 Route::resource('quizzes', QuizController::class);
-Route::get('/quizzes/play', [QuizController::class, 'play'])->middleware('auth');
 Route::get('/quizzes/play', [QuizController::class, 'play'])->name('quizzes.play');
+Route::get('/quizzes/{quiz}', [QuizController::class, 'show'])->name('quizzes.show');
+
 
 
 
