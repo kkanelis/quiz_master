@@ -23,10 +23,17 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware('auth');
 
 Route::resource('quizzes', QuizController::class);
+<<<<<<< HEAD
 Route::get('/quizzes/play', [QuizController::class, 'play'])->name('quizzes.play');
 Route::get('/quizzes/{quiz}', [QuizController::class, 'show'])->name('quizzes.show');
 
 
+=======
+Route::get('/quizzes/play', [QuizController::class, 'play'])->middleware('auth');
+Route::get('/quizzes/{quiz}', [QuizController::class, 'show'])->name('quizzes.show');
+Route::get('/quizzes/play', [QuizController::class, 'play'])->name('quizzes.play');
+Route::get('/quiz/result', [QuizController::class, 'result'])->name('quiz.result');
+>>>>>>> 13257079115520e3a6f0b25a1188ee6c0c831a15
 
 
 Route::resource('questions', QuestionController::class);
@@ -34,3 +41,5 @@ Route::resource('results', ResultController::class);
 Route::middleware(['auth'])->group(function () {
     Route::resource('quizzes', QuizController::class);
 });
+Route::post('/quiz/submit', [QuestionController::class, 'submitQuiz'])->name('quiz.submit');
+Route::get('/quiz/result', [QuizController::class, 'result'])->name('quiz.result');
