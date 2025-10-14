@@ -1,14 +1,15 @@
+{{-- filepath: resources/views/quizzes/play.blade.php --}}
 <x-layout>
-    @section('content')
     <div class="quiz-container">
         <h1 class="quiz-title">
-            Quiz
-            @if($topic) (Topic: {{ ucfirst($topic) }}) @endif
-            @if($difficulty) - Difficulty: {{ ucfirst($difficulty) }} @endif
+            {{ $quiz->title ?? 'Quiz' }}
+            @if($topic) (Tēma: {{ ucfirst($topic) }}) @endif
+            @if($difficulty) - Grūtība: {{ ucfirst($difficulty) }} @endif
         </h1>
 
         <form method="POST" action="{{ route('quiz.submit') }}" id="quizForm">
             @csrf
+            <input type="hidden" name="quiz_id" value="{{ $quiz_id }}">
             <input type="hidden" name="topic" value="{{ $topic }}">
             <input type="hidden" name="difficulty" value="{{ $difficulty }}">
 
@@ -29,8 +30,7 @@
                 </div>
             @endforeach
 
-            <button type="submit" class="btn btn-primary">Submit Quiz</button>
+            <button type="submit" class="btn btn-primary">Iesniegt viktorīnu</button>
         </form>
     </div>
-    @endsection
 </x-layout>

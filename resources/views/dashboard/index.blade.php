@@ -40,7 +40,7 @@
             @foreach($quizzes as $quiz)
                 <div class="quiz-card">
                     <h3 class="quiz-card-title">{{ $quiz->title }}</h3>
-                    <a href="{{ route('quizzes.play', ['topic' => $topic, 'difficulty' => $difficulty]) }}" class="btn btn-secondary">
+                    <a href="{{ route('quizzes.play', ['quiz' => $quiz->id]) }}" class="btn btn-secondary">
                         Spēlēt tagad
                     </a>
                 </div>

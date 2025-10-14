@@ -24,7 +24,7 @@ class QuizController extends Controller
         ]);
     }
 
-    public function play(Request $request)
+    public function play(Quiz $quiz, Request $request)
     {
         $topic = $request->query('topic');
         $difficulty = $request->query('difficulty');
@@ -32,6 +32,7 @@ class QuizController extends Controller
         session(['quiz_start_time' => now()]);
 
         $questions = Question::query()
+            ->where('quiz_id', $quiz->id)
             ->when($topic, function ($query, $topic) {
                 return $query->where('topic', $topic);
             })
@@ -42,7 +43,13 @@ class QuizController extends Controller
             ->limit(10)
             ->get();
 
-        return view('quizzes.play', compact('questions', 'topic', 'difficulty'));
+        return view('quizzes.play', [
+            'questions' => $questions,
+            'topic' => $topic,
+            'difficulty' => $difficulty,
+            'quiz' => $quiz,
+            'quiz_id' => $quiz->id,
+        ]);
     }
 
     public function result()

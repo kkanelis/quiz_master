@@ -10,13 +10,21 @@ class QuestionSeeder extends Seeder
 {
     public function run(): void
     {
-        $quiz = Quiz::create([
-            'title' => 'Matemātikas tests',
-        ]);
+        $mathquiz1 = Quiz::create(['title' => 'Matemātikas tests (Viegls)']);
+        $mathquiz2 = Quiz::create(['title' => 'Matemātikas tests (Vidējs)']);
+        $mathquiz3 = Quiz::create(['title' => 'Matemātikas tests (Grūts)']);
+
+        $sportquiz1 = Quiz::create(['title' => 'Sporta tests (Viegls)']);
+        $sportquiz2 = Quiz::create(['title' => 'Sporta tests (Vidējs)']);
+        $sportquiz3 = Quiz::create(['title' => 'Sporta tests (Grūts)']);
+
+        $geoquiz1 = Quiz::create(['title' => 'Ģeogrāfijas tests (Viegls)']);
+        $geoquiz2 = Quiz::create(['title' => 'Ģeogrāfijas tests (Vidējs)']);
+        $geoquiz3 = Quiz::create(['title' => 'Ģeogrāfijas tests (Grūts)']);
 
         // Easy
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $mathquiz1->id,
             'question' => 'Cik ir 5 + 3?',
             'options' => json_encode(['6','7','8','9']),
             'answer' => '8',
@@ -24,7 +32,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'math',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $mathquiz1->id,
             'question' => 'Kāds ir nākamais skaitlis pēc 9?',
             'options' => json_encode(['8','9','10','11']),
             'answer' => '10',
@@ -32,7 +40,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'math',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $mathquiz1->id,
             'question' => 'Cik ir 2 + 6?',
             'options' => json_encode(['6','7','8','9']),
             'answer' => '8',
@@ -40,7 +48,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'math',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $mathquiz1->id,
             'question' => 'Cik ir 10 - 4?',
             'options' => json_encode(['4','5','6','7']),
             'answer' => '6',
@@ -48,7 +56,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'math',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $mathquiz1->id,
             'question' => 'Cik ir 3 × 2?',
             'options' => json_encode(['5','6','7','8']),
             'answer' => '6',
@@ -58,7 +66,7 @@ class QuestionSeeder extends Seeder
 
         // medium
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $mathquiz2->id,
             'question' => 'Cik ir 12 × 3?',
             'options' => json_encode(['36','24','15','30']),
             'answer' => '36',
@@ -66,7 +74,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'math',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $mathquiz2->id,
             'question' => 'Kāds ir 25% no 80?',
             'options' => json_encode(['10','15','20','25']),
             'answer' => '20',
@@ -74,7 +82,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'math',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $mathquiz2->id,
             'question' => 'Cik ir 45 ÷ 5?',
             'options' => json_encode(['7','8','9','10']),
             'answer' => '9',
@@ -82,7 +90,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'math',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $mathquiz2->id,
             'question' => 'Cik ir 7 × 8?',
             'options' => json_encode(['54','56','58','60']),
             'answer' => '56',
@@ -90,7 +98,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'math',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $mathquiz2->id,
             'question' => 'Cik ir 100 - 37?',
             'options' => json_encode(['63','64','65','66']),
             'answer' => '63',
@@ -100,7 +108,7 @@ class QuestionSeeder extends Seeder
 
         // Hard
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $mathquiz3->id,
             'question' => 'Cik ir kvadrātsakne no 225?',
             'options' => json_encode(['14','15','16','17']),
             'answer' => '15',
@@ -108,7 +116,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'math',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $mathquiz3->id,
             'question' => 'Cik ir 13 × 17?',
             'options' => json_encode(['211','221','231','241']),
             'answer' => '221',
@@ -116,7 +124,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'math',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $mathquiz3->id,
             'question' => 'Cik ir 144 ÷ 12?',
             'options' => json_encode(['10','11','12','13']),
             'answer' => '12',
@@ -124,7 +132,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'math',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $mathquiz3->id,
             'question' => 'Cik ir 2^5?',
             'options' => json_encode(['16','32','64','128']),
             'answer' => '32',
@@ -132,7 +140,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'math',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $mathquiz3->id,
             'question' => 'Kāds ir 60% no 250?',
             'options' => json_encode(['120','130','140','150']),
             'answer' => '150',
@@ -141,7 +149,7 @@ class QuestionSeeder extends Seeder
         ]);
         // Geography - Easy
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $geoquiz1->id,
             'question' => 'Kura ir Latvijas galvaspilsēta?',
             'options' => json_encode(['Rīga','Tallina','Viļņa','Prāga']),
             'answer' => 'Rīga',
@@ -149,7 +157,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'geography',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $geoquiz1->id,
             'question' => 'Kura ir lielākā okeāna pasaulē?',
             'options' => json_encode(['Atlantijas','Indijas','Klusais','Arktikas']),
             'answer' => 'Klusais',
@@ -157,7 +165,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'geography',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $geoquiz1->id,
             'question' => 'Kura valsts atrodas uz Apenīnu pussalas?',
             'options' => json_encode(['Spānija','Itālija','Francija','Vācija']),
             'answer' => 'Itālija',
@@ -165,7 +173,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'geography',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $geoquiz1->id,
             'question' => 'Kura ir lielākā sala pasaulē?',
             'options' => json_encode(['Austrālija','Grenlande','Madagaskara','Sumatra']),
             'answer' => 'Grenlande',
@@ -173,7 +181,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'geography',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $geoquiz1->id,
             'question' => 'Kura upe plūst caur Rīgu?',
             'options' => json_encode(['Daugava','Gauja','Venta','Lielupe']),
             'answer' => 'Daugava',
@@ -183,7 +191,7 @@ class QuestionSeeder extends Seeder
 
         // Geography - medium
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $geoquiz2->id,
             'question' => 'Kura ir otrā lielākā valsts pasaulē pēc platības?',
             'options' => json_encode(['ASV','Kanāda','Ķīna','Brazīlija']),
             'answer' => 'Kanāda',
@@ -191,7 +199,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'geography',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $geoquiz2->id,
             'question' => 'Kura kalnu grēda atrodas starp Eiropu un Āziju?',
             'options' => json_encode(['Alpi','Karpati','Urāli','Andi']),
             'answer' => 'Urāli',
@@ -199,7 +207,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'geography',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $geoquiz2->id,
             'question' => 'Kura ir garākā upe Āfrikā?',
             'options' => json_encode(['Nīla','Kongo','Nigēra','Zambezi']),
             'answer' => 'Nīla',
@@ -207,7 +215,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'geography',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $geoquiz2->id,
             'question' => 'Kura valsts robežojas ar visvairāk valstīm?',
             'options' => json_encode(['Krievija','Ķīna','Brazīlija','Vācija']),
             'answer' => 'Ķīna',
@@ -215,7 +223,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'geography',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $geoquiz2->id,
             'question' => 'Kura ir lielākā pilsēta pēc iedzīvotāju skaita pasaulē?',
             'options' => json_encode(['Tokija','Ņujorka','Londona','Maskava']),
             'answer' => 'Tokija',
@@ -225,7 +233,7 @@ class QuestionSeeder extends Seeder
 
         // Geography - Hard
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $geoquiz3->id,
             'question' => 'Kura ir augstākā virsotne Dienvidamerikā?',
             'options' => json_encode(['Aconcagua','Kilimandžaro','Elbruss','Denali']),
             'answer' => 'Aconcagua',
@@ -233,7 +241,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'geography',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $geoquiz3->id,
             'question' => 'Kura valsts ir pazīstama kā "Tūkstoš ezeru zeme"?',
             'options' => json_encode(['Zviedrija','Somija','Norvēģija','Kanāda']),
             'answer' => 'Somija',
@@ -241,7 +249,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'geography',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $geoquiz3->id,
             'question' => 'Kura ir mazākā neatkarīgā valsts pasaulē?',
             'options' => json_encode(['Monako','Vatikāns','Sanmarīno','Lihtenšteina']),
             'answer' => 'Vatikāns',
@@ -249,7 +257,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'geography',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $geoquiz3->id,
             'question' => 'Kurš ir dziļākā ezera pasaulē?',
             'options' => json_encode(['Baikāls','Tanganjika','Drīdzis','Superior']),
             'answer' => 'Baikāls',
@@ -257,7 +265,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'geography',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $geoquiz3->id,
             'question' => 'Kura valsts atrodas gan Eiropā, gan Āzijā?',
             'options' => json_encode(['Turcija','Spānija','Ēģipte','Indija']),
             'answer' => 'Turcija',
@@ -266,7 +274,7 @@ class QuestionSeeder extends Seeder
         ]);
         // Sport - Easy
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $sportquiz1->id,
             'question' => 'Cik spēlētāju ir futbola komandā laukumā?',
             'options' => json_encode(['9','10','11','12']),
             'answer' => '11',
@@ -274,7 +282,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'sport',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $sportquiz1->id,
             'question' => 'Kāds sporta veids tiek spēlēts ar tenisa raketi?',
             'options' => json_encode(['Teniss','Basketbols','Badmintons','Hokejs']),
             'answer' => 'Teniss',
@@ -282,7 +290,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'sport',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $sportquiz1->id,
             'question' => 'Kāds ir galvenais mērķis basketbolā?',
             'options' => json_encode(['Iemest bumbu grozā','Iemest bumbu vārtos','Pieskarties bumbai ar kāju','Peldēt ātrāk']),
             'answer' => 'Iemest bumbu grozā',
@@ -290,7 +298,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'sport',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $sportquiz1->id,
             'question' => 'Kāds sporta veids tiek spēlēts uz ledus ar nūjām?',
             'options' => json_encode(['Hokejs','Futbols','Basketbols','Teniss']),
             'answer' => 'Hokejs',
@@ -298,7 +306,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'sport',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $sportquiz1->id,
             'question' => 'Kāds sporta veids ir saistīts ar Olimpiskajām spēlēm?',
             'options' => json_encode(['Daudzi sporta veidi','Tikai futbols','Tikai teniss','Tikai hokejs']),
             'answer' => 'Daudzi sporta veidi',
@@ -308,7 +316,7 @@ class QuestionSeeder extends Seeder
 
         // Sport - medium
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $sportquiz2->id,
             'question' => 'Kurā gadā Latvija ieguva pirmo olimpisko zelta medaļu?',
             'options' => json_encode(['1992','2000','2008','2012']),
             'answer' => '2000',
@@ -316,7 +324,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'sport',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $sportquiz2->id,
             'question' => 'Kāds ir maksimālais punktu skaits vienā volejbola setā (bez pārsvara)?',
             'options' => json_encode(['21','25','30','15']),
             'answer' => '25',
@@ -324,7 +332,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'sport',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $sportquiz2->id,
             'question' => 'Kura valsts ir izcīnījusi visvairāk FIFA Pasaules kausu?',
             'options' => json_encode(['Vācija','Itālija','Brazīlija','Francija']),
             'answer' => 'Brazīlija',
@@ -332,7 +340,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'sport',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $sportquiz2->id,
             'question' => 'Cik minūtes ilgst standarta hokeja spēle (bez papildlaika)?',
             'options' => json_encode(['60','70','80','90']),
             'answer' => '60',
@@ -340,7 +348,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'sport',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $sportquiz2->id,
             'question' => 'Kāds sporta veids ir saistīts ar "Grand Slam" turnīriem?',
             'options' => json_encode(['Teniss','Futbols','Basketbols','Hokejs']),
             'answer' => 'Teniss',
@@ -350,7 +358,7 @@ class QuestionSeeder extends Seeder
 
         // Sport - Hard
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $sportquiz3->id,
             'question' => 'Kurš latviešu sportists ir izcīnījis olimpisko zelta medaļu BMX riteņbraukšanā?',
             'options' => json_encode(['Māris Štrombergs','Ernests Gulbis','Kristaps Porziņģis','Sandis Ozoliņš']),
             'answer' => 'Māris Štrombergs',
@@ -358,7 +366,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'sport',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $sportquiz3->id,
             'question' => 'Kura valsts ir uzvarējusi visvairāk olimpisko medaļu kopvērtējumā?',
             'options' => json_encode(['ASV','Krievija','Ķīna','Vācija']),
             'answer' => 'ASV',
@@ -366,7 +374,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'sport',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $sportquiz3->id,
             'question' => 'Kurā gadā notika pirmais FIFA Pasaules kauss?',
             'options' => json_encode(['1928','1930','1934','1940']),
             'answer' => '1930',
@@ -374,7 +382,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'sport',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $sportquiz3->id,
             'question' => 'Kurš basketbolists ir visvairāk reizes kļuvis par NBA čempionu?',
             'options' => json_encode(['Michael Jordan','Bill Russell','LeBron James','Kobe Bryant']),
             'answer' => 'Bill Russell',
@@ -382,7 +390,7 @@ class QuestionSeeder extends Seeder
             'topic' => 'sport',
         ]);
         Question::create([
-            'quiz_id' => $quiz->id,
+            'quiz_id' => $sportquiz3->id,
             'question' => 'Kāds ir maratona distances garums kilometros?',
             'options' => json_encode(['40.195','41.195','42.195','43.195']),
             'answer' => '42.195',

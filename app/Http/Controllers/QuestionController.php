@@ -65,7 +65,7 @@ class QuestionController extends Controller
         //
     }
 
-    public function submitQuiz(Request $request)
+    public function submitQuiz(Request $request, Result $result)
     {
         $startTime = session('quiz_start_time');
         $endTime = now();
