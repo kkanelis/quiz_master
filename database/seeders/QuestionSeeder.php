@@ -112,13 +112,13 @@ class QuestionSeeder extends Seeder
             'topic' => 'math',
         ]);
 
-        // Normal
+        // medium
         Question::create([
             'quiz_id' => $quiz->id,
             'question' => 'Cik ir 12 × 3?',
             'options' => json_encode(['36','24','15','30']),
             'answer' => '36',
-            'difficulty' => 'normal',
+            'difficulty' => 'medium',
             'topic' => 'math',
         ]);
         Question::create([
@@ -126,7 +126,7 @@ class QuestionSeeder extends Seeder
             'question' => 'Kāds ir 25% no 80?',
             'options' => json_encode(['10','15','20','25']),
             'answer' => '20',
-            'difficulty' => 'normal',
+            'difficulty' => 'medium',
             'topic' => 'math',
         ]);
         Question::create([
@@ -134,7 +134,7 @@ class QuestionSeeder extends Seeder
             'question' => 'Cik ir 45 ÷ 5?',
             'options' => json_encode(['7','8','9','10']),
             'answer' => '9',
-            'difficulty' => 'normal',
+            'difficulty' => 'medium',
             'topic' => 'math',
         ]);
         Question::create([
@@ -142,7 +142,7 @@ class QuestionSeeder extends Seeder
             'question' => 'Cik ir 7 × 8?',
             'options' => json_encode(['54','56','58','60']),
             'answer' => '56',
-            'difficulty' => 'normal',
+            'difficulty' => 'medium',
             'topic' => 'math',
         ]);
         Question::create([
@@ -150,7 +150,7 @@ class QuestionSeeder extends Seeder
             'question' => 'Cik ir 100 - 37?',
             'options' => json_encode(['63','64','65','66']),
             'answer' => '63',
-            'difficulty' => 'normal',
+            'difficulty' => 'medium',
             'topic' => 'math',
         ]);
 
@@ -238,13 +238,13 @@ class QuestionSeeder extends Seeder
             'topic' => 'geography',
         ]);
 
-        // Geography - Normal
+        // Geography - medium
         Question::create([
             'quiz_id' => $quiz->id,
             'question' => 'Kura ir otrā lielākā valsts pasaulē pēc platības?',
             'options' => json_encode(['ASV','Kanāda','Ķīna','Brazīlija']),
             'answer' => 'Kanāda',
-            'difficulty' => 'normal',
+            'difficulty' => 'medium',
             'topic' => 'geography',
         ]);
         Question::create([
@@ -252,7 +252,7 @@ class QuestionSeeder extends Seeder
             'question' => 'Kura kalnu grēda atrodas starp Eiropu un Āziju?',
             'options' => json_encode(['Alpi','Karpati','Urāli','Andi']),
             'answer' => 'Urāli',
-            'difficulty' => 'normal',
+            'difficulty' => 'medium',
             'topic' => 'geography',
         ]);
         Question::create([
@@ -260,7 +260,7 @@ class QuestionSeeder extends Seeder
             'question' => 'Kura ir garākā upe Āfrikā?',
             'options' => json_encode(['Nīla','Kongo','Nigēra','Zambezi']),
             'answer' => 'Nīla',
-            'difficulty' => 'normal',
+            'difficulty' => 'medium',
             'topic' => 'geography',
         ]);
         Question::create([
@@ -268,7 +268,7 @@ class QuestionSeeder extends Seeder
             'question' => 'Kura valsts robežojas ar visvairāk valstīm?',
             'options' => json_encode(['Krievija','Ķīna','Brazīlija','Vācija']),
             'answer' => 'Ķīna',
-            'difficulty' => 'normal',
+            'difficulty' => 'medium',
             'topic' => 'geography',
         ]);
         Question::create([
@@ -276,7 +276,7 @@ class QuestionSeeder extends Seeder
             'question' => 'Kura ir lielākā pilsēta pēc iedzīvotāju skaita pasaulē?',
             'options' => json_encode(['Tokija','Ņujorka','Londona','Maskava']),
             'answer' => 'Tokija',
-            'difficulty' => 'normal',
+            'difficulty' => 'medium',
             'topic' => 'geography',
         ]);
 
@@ -363,13 +363,13 @@ class QuestionSeeder extends Seeder
             'topic' => 'sport',
         ]);
 
-        // Sport - Normal
+        // Sport - medium
         Question::create([
             'quiz_id' => $quiz->id,
             'question' => 'Kurā gadā Latvija ieguva pirmo olimpisko zelta medaļu?',
             'options' => json_encode(['1992','2000','2008','2012']),
             'answer' => '2000',
-            'difficulty' => 'normal',
+            'difficulty' => 'medium',
             'topic' => 'sport',
         ]);
         Question::create([
@@ -377,7 +377,7 @@ class QuestionSeeder extends Seeder
             'question' => 'Kāds ir maksimālais punktu skaits vienā volejbola setā (bez pārsvara)?',
             'options' => json_encode(['21','25','30','15']),
             'answer' => '25',
-            'difficulty' => 'normal',
+            'difficulty' => 'medium',
             'topic' => 'sport',
         ]);
         Question::create([
@@ -385,7 +385,7 @@ class QuestionSeeder extends Seeder
             'question' => 'Kura valsts ir izcīnījusi visvairāk FIFA Pasaules kausu?',
             'options' => json_encode(['Vācija','Itālija','Brazīlija','Francija']),
             'answer' => 'Brazīlija',
-            'difficulty' => 'normal',
+            'difficulty' => 'medium',
             'topic' => 'sport',
         ]);
         Question::create([
@@ -393,7 +393,7 @@ class QuestionSeeder extends Seeder
             'question' => 'Cik minūtes ilgst standarta hokeja spēle (bez papildlaika)?',
             'options' => json_encode(['60','70','80','90']),
             'answer' => '60',
-            'difficulty' => 'normal',
+            'difficulty' => 'medium',
             'topic' => 'sport',
         ]);
         Question::create([
@@ -401,7 +401,7 @@ class QuestionSeeder extends Seeder
             'question' => 'Kāds sporta veids ir saistīts ar "Grand Slam" turnīriem?',
             'options' => json_encode(['Teniss','Futbols','Basketbols','Hokejs']),
             'answer' => 'Teniss',
-            'difficulty' => 'normal',
+            'difficulty' => 'medium',
             'topic' => 'sport',
         ]);
 
