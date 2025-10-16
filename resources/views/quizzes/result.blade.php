@@ -1,18 +1,20 @@
-<x-layout>
-    <div class="result-container">
-        <h1 class="result-title">Quiz Results</h1>
-        
-        <div class="result-card">
-            <div class="score-info">
-                <h2>Your Score: {{ session('score') }}/{{ session('total') }}</h2>
-                <p class="percentage">Percentage: {{ session('percentage') }}%</p>
-                <p class="time">Time taken: {{ gmdate('i:s', session('time')) }}</p>
-            </div>
+<h1>Rezultāti</h1>
+<p>Rezultāts: {{ $score }} no {{ $total }} ({{ round($percentage, 2) }}%)</p>
 
-            <div class="result-actions">
-                <a href="{{ route('dashboard') }}" class="btn btn-primary">Back to Dashboard</a>
-                <a href="{{ route('quizzes.play') }}" class="btn btn-secondary">Try Another Quiz</a>
-            </div>
-        </div>
+<h2>Atbildes:</h2>
+@foreach ($results as $result)
+    <div class="question-result">
+        <p><strong>Jautājums:</strong> {{ $result['question'] }}</p>
+        <p><strong>Tava atbilde:</strong> {{ $result['user_answer'] ?? 'Nav atbildes' }}</p>
+        <p><strong>Pareizā atbilde:</strong> {{ $result['correct_answer'] }}</p>
+        <p>
+            <strong>Statuss:</strong>
+            @if($result['is_correct'])
+                <span style="color: green;">✅ Pareizi</span>
+            @else
+                <span style="color: red;">❌ Nepareizi</span>
+            @endif
+        </p>
+        <hr>
     </div>
-</x-layout>
+@endforeach

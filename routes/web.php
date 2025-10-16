@@ -34,5 +34,5 @@ Route::resource('results', ResultController::class);
 Route::middleware(['auth'])->group(function () {
     Route::resource('quizzes', QuizController::class);
 });
-Route::post('/quiz/submit', [QuestionController::class, 'submitQuiz'])->name('quiz.submit');
+Route::post('/quiz/submit', [QuizController::class, 'submit'])->name('quiz.submit');
 Route::get('/quiz/result', [QuizController::class, 'result'])->name('quiz.result');
