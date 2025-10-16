@@ -1,3 +1,7 @@
+<?php
+session()->forget(['quiz_id', 'quiz_start_time', 'question_ids', 'quiz_score', 'quiz_total', 'quiz_results', 'quiz_time_spent']);
+?>
+
 <x-layout>
 
 <div class="dashboard-container">

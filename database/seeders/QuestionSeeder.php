@@ -8,10 +8,7 @@ use App\Models\Question;
 
 class QuestionSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+   public function run(): void
     {
         $mathquiz1 = Quiz::create(['title' => 'Matemātikas tests (Viegls)']);
         $mathquiz2 = Quiz::create(['title' => 'Matemātikas tests (Vidējs)']);

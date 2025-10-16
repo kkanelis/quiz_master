@@ -366,18 +366,18 @@ body {
     padding: 0 1rem;
 }
 
-.result-title {
-    color: var(--accent-color);
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
 .result-card {
     background: white;
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     text-align: center;
+}
+
+.result-title {
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 .score-info {
@@ -398,6 +398,31 @@ body {
     display: flex;
     gap: 1rem;
     justify-content: center;
+}
+
+.question-result {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    margin: 24px auto;
+    padding: 20px;
+    max-width: 600px;
+}
+
+.question-text {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.question-result p {
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+.question-result hr {
+    margin: 16px 0;
+    border: none;
+    border-top: 1px solid #eee;
 }
 
 /* Responsive Design */

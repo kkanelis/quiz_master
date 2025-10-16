@@ -40,47 +40,53 @@ class QuizController extends Controller
 
     // Apstrādā iesniegtās atbildes
     public function submit(Request $request)
-{
-    $quizId = session('quiz_id');
-    $questionIds = session('question_ids', []);
-    $userAnswers = $request->input('answers', []);
+    {
+        $quizId = session('quiz_id');
+        $questionIds = session('question_ids', []);
+        $userAnswers = $request->input('answers', []);
 
-    $questions = Question::whereIn('id', $questionIds)->get();
+        $questions = Question::whereIn('id', $questionIds)->get();
 
-    $score = 0;
-    $results = [];
+        $score = 0;
+        $results = [];
 
-    foreach ($questions as $question) {
-        $userAnswer = $userAnswers[$question->id] ?? null;
-        // mainām correct_answer → answer
-        $correct = trim($userAnswer) == trim($question->answer);
+        foreach ($questions as $question) {
+            $userAnswer = $userAnswers[$question->id] ?? null;
+            $correct = trim($userAnswer) == trim($question->answer);
 
-        if ($correct) {
-            $score++;
+            if ($correct) {
+                $score++;
+            }
+
+            $results[] = [
+                'question' => $question->question,
+                'user_answer' => $userAnswer,
+                'correct_answer' => $question->answer,
+                'is_correct' => $correct,
+            ];
         }
 
-        $results[] = [
-            'question' => $question->question,
-            'user_answer' => $userAnswer,
-            'correct_answer' => $question->answer, // arī šeit
-            'is_correct' => $correct,
-        ];
+        // Calculate time spent
+        $startTime = session('quiz_start_time');
+        $timeSpent = $startTime ? $startTime->diffInSeconds(now()) : null;
+
+        session([
+            'quiz_score' => $score,
+            'quiz_total' => count($questions),
+            'quiz_results' => $results,
+            'quiz_time_spent' => $timeSpent,
+        ]);
+
+        return redirect()->route('quiz.result');
     }
 
-    session([
-        'quiz_score' => $score,
-        'quiz_total' => count($questions),
-        'quiz_results' => $results,
-    ]);
-
-    return redirect()->route('quiz.result');
-}
     // Rāda rezultātu lapu
     public function result()
     {
         $score = session('quiz_score');
         $total = session('quiz_total');
         $results = session('quiz_results');
+        $timeSpent = session('quiz_time_spent');
 
         if ($score === null || $total === null || $results === null) {
             return redirect('/')->withErrors('Rezultāti nav pieejami vai sesija ir beigusies.');
@@ -88,6 +94,6 @@ class QuizController extends Controller
 
         $percentage = ($score / $total) * 100;
 
-        return view('quizzes.result', compact('score', 'total', 'percentage', 'results'));
+        return view('quizzes.result', compact('score', 'total', 'percentage', 'results', 'timeSpent'));
     }
 }
